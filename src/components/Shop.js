@@ -5,21 +5,23 @@ import Title from "./Title";
 import Navbar from "./Navbar";
 
 class Shop extends Component {
+  products = [
+    { name: "Tomate", price: 1500, img: "/productos/tomate.jpg" },
+    { name: "Arbejas", price: 2500, img: "/productos/arbejas.jpg" },
+    { name: "Lechuga", price: 500, img: "/productos/lechuga.jpg" },
+  ];
+
   state = {
-    productos: [
-      { name: "Tomate", price: 1500, img: "/productos/tomate.jpg" },
-      { name: "Arbejas", price: 2500, img: "/productos/arbejas.jpg" },
-      { name: "Lechuga", price: 500, img: "/productos/lechuga.jpg" },
-    ],
     carro: [],
     esCarroVisible: false,
   };
 
-  agregarAlCarro = (producto) => {
+  agregarAlCarro = (product) => {
     const { carro } = this.state;
-    if (carro.find((p) => p.name === producto.name)) {
+    const Products = this.products;
+    if (carro.find((p) => p.name === Products.name)) {
       const newCarro = carro.map((p) =>
-        p.name === producto.name
+        p.name === Products.name
           ? {
               ...p,
               cantidad: p.cantidad + 1,
@@ -30,7 +32,7 @@ class Shop extends Component {
     }
     return this.setState({
       carro: this.state.carro.concat({
-        ...producto,
+        ...product,
         cantidad: 1,
       }),
     });
@@ -56,7 +58,7 @@ class Shop extends Component {
           <Title />
           <Productos
             agregarAlCarro={this.agregarAlCarro}
-            productos={this.state.productos}
+            productos={this.products}
           />
         </Layout>
       </div>
