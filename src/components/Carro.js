@@ -1,6 +1,7 @@
 import { Component } from "react";
 import BubbleAlert from "./BubbleAlert";
 import DetallesCarro from "./DetallesCarro";
+const _ = require('lodash');
 
 const styles = {
   carro: {
@@ -34,7 +35,8 @@ class Carro extends Component {
     const { carro } = this.props;
     const mostrarCarro = this.mostrarCarro;
     const { esCarroVisible } = this.state;
-    const cantidad = carro.reduce((acc, el) => acc + el.cantidad, 0);
+    // const cantidad = carro.reduce((acc, el) => acc + el.cantidad, 0);
+    const cantidad = _.sumBy(carro, (el) => el.cantidad)
 
     return (
       <div>
