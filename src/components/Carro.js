@@ -19,9 +19,23 @@ const styles = {
 };
 
 class Carro extends Component {
+  state = {
+    esCarroVisible: false,
+  };
+
+  mostrarCarro = () => {
+    if (!this.props.carro.length) {
+      return;
+    }
+    this.setState({ esCarroVisible: !this.state.esCarroVisible });
+  };
+
   render() {
-    const { carro, esCarroVisible, mostrarCarro } = this.props;
+    const { carro } = this.props;
+    const mostrarCarro = this.mostrarCarro;
+    const { esCarroVisible } = this.state;
     const cantidad = carro.reduce((acc, el) => acc + el.cantidad, 0);
+
     return (
       <div>
         <span style={styles.bubble}>

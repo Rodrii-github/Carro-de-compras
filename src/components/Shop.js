@@ -5,23 +5,15 @@ import Title from "./Title";
 import Navbar from "./Navbar";
 
 class Shop extends Component {
-  products = [
-    { name: "Tomate", price: 1500, img: "/productos/tomate.jpg" },
-    { name: "Arbejas", price: 2500, img: "/productos/arbejas.jpg" },
-    { name: "Lechuga", price: 500, img: "/productos/lechuga.jpg" },
-  ];
-
   state = {
     carro: [],
-    esCarroVisible: false,
   };
 
   agregarAlCarro = (product) => {
     const { carro } = this.state;
-    const Products = this.products;
-    if (carro.find((p) => p.name === Products.name)) {
+    if (carro.find((p) => p.name === product.name)) {
       const newCarro = carro.map((p) =>
-        p.name === Products.name
+        p.name === product.name
           ? {
               ...p,
               cantidad: p.cantidad + 1,
@@ -38,28 +30,13 @@ class Shop extends Component {
     });
   };
 
-  mostrarCarro = () => {
-    if (!this.state.carro.length) {
-      return;
-    }
-    this.setState({ esCarroVisible: !this.state.esCarroVisible });
-  };
-
   render() {
-    const { esCarroVisible } = this.state;
     return (
       <div>
-        <Navbar
-          carro={this.state.carro}
-          esCarroVisible={esCarroVisible}
-          mostrarCarro={this.mostrarCarro}
-        />
+        <Navbar carro={this.state.carro} />
         <Layout>
           <Title />
-          <Productos
-            agregarAlCarro={this.agregarAlCarro}
-            productos={this.products}
-          />
+          <Productos carro={this.state.carro} agregarAlCarro={this.agregarAlCarro} />
         </Layout>
       </div>
     );
