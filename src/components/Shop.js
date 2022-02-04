@@ -17,6 +17,7 @@ class Shop extends Component {
           ? {
               ...p,
               cantidad: p.cantidad + 1,
+              price: p.price + product.price
             }
           : p
       );
