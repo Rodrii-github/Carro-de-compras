@@ -42,6 +42,7 @@ class DetalleCarro extends Component {
           {carro.map((x) => (
             <li style={styles.producto} key={x.name}>
               <ImageProduct product={x} style={styles.img} />
+              
               {x.name}
               <span>{x.cantidad}</span>
               <span>{x.price}</span>
