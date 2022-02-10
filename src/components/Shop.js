@@ -1,8 +1,6 @@
 import { Component } from "react";
-import Productos from "./Productos";
-import Layout from "./Layout";
-import Title from "./Title";
 import Navbar from "./Navbar";
+import ShopLayout from "./ShopLayout";
 
 class Shop extends Component {
   state = {
@@ -17,7 +15,7 @@ class Shop extends Component {
           ? {
               ...p,
               cantidad: p.cantidad + 1,
-              price: p.price + product.price
+              price: p.price + product.price,
             }
           : p
       );
@@ -35,10 +33,10 @@ class Shop extends Component {
     return (
       <div>
         <Navbar carro={this.state.carro} />
-        <Layout>
-          <Title />
-          <Productos carro={this.state.carro} agregarAlCarro={this.agregarAlCarro} />
-        </Layout>
+        <ShopLayout
+          carro={this.state.carro}
+          agregarAlCarro={this.agregarAlCarro}
+        />
       </div>
     );
   }

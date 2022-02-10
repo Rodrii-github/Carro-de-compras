@@ -25,10 +25,11 @@ const styles = {
   },
 };
 
-class DetallesCarro extends Component {
+class DetalleCarro extends Component {
   render() {
     const { carro } = this.props;
-    const priceTotal = _.sumBy(carro, (el) => el.price)
+    const priceTotal = _.sumBy(carro, "price");
+    const subtotal = _.sumBy(carro, "cantidad");
     
     return (
       <div style={styles.detallesCarro}>
@@ -42,6 +43,9 @@ class DetallesCarro extends Component {
             </li>
           ))}
           <div style={styles.producto}>
+            {subtotal} x {priceTotal}
+          </div>
+          <div style={styles.producto}>
             Total: {priceTotal}
           </div>
         </ul>
@@ -50,4 +54,4 @@ class DetallesCarro extends Component {
   }
 }
 
-export default DetallesCarro;
+export default DetalleCarro;

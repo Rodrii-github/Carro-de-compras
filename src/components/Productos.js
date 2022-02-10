@@ -17,15 +17,14 @@ class Productos extends Component {
   ];
 
   render() {
-    const Product = this.products;
-    const { carro, agregarAlCarro } = this.props;
+    const products = this.products;
+    const { agregarAlCarro } = this.props;
     return (
       <div style={styles.productos}>
-        {Product.map((product) => (
+        {products.map((product) => (
           <Producto
             key={product.name}
-            products={product}
-            carro={carro}
+            product={product}
             agregarAlCarro={agregarAlCarro}
           />
         ))}

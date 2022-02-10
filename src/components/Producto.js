@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Button from "./Button";
+import ImageProduct from "./ImageProduct";
 
 const styles = {
   producto: {
@@ -16,13 +17,13 @@ const styles = {
 
 class Producto extends Component {
   render() {
-    const { products, agregarAlCarro } = this.props;
+    const { product, agregarAlCarro } = this.props;
     return (
       <div style={styles.producto}>
-        <img style={styles.img} alt={products.name} src={products.img} />
-        <h3>{products.name}</h3>
-        <p>{products.price}</p>
-        <Button onClick={() => agregarAlCarro(products)}>
+        <ImageProduct product={product} style={styles.img} />
+        <h3>{product.name}</h3>
+        <p>{product.price}</p>
+        <Button onClick={() => agregarAlCarro(product)}>
           Agregar al carro
         </Button>
       </div>
