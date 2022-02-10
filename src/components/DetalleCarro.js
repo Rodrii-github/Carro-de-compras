@@ -1,4 +1,5 @@
 import { Component } from "react";
+import ImageProduct from "./ImageProduct";
 const _ = require ("lodash");
 
 const styles = {
@@ -23,6 +24,10 @@ const styles = {
     padding: "25px 20px",
     borderBottom: "1px solid #aaa",
   },
+  img: {
+    width: 75,
+    height: 50,
+  },
 };
 
 class DetalleCarro extends Component {
@@ -36,7 +41,7 @@ class DetalleCarro extends Component {
         <ul style={styles.ul}>
           {carro.map((x) => (
             <li style={styles.producto} key={x.name}>
-              <img alt={x.name} src={x.img} width="50" height="32" />
+              <ImageProduct product={x} style={styles.img} />
               {x.name}
               <span>{x.cantidad}</span>
               <span>{x.price}</span>
