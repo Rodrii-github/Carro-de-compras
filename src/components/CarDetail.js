@@ -3,7 +3,7 @@ import ImageProduct from "./ImageProduct";
 const _ = require ("lodash");
 
 const styles = {
-  detallesCarro: {
+  carDetail: {
     backgroundColor: "#fff",
     position: "absolute",
     marginTop: 30,
@@ -16,7 +16,7 @@ const styles = {
     margin: 0,
     padding: 0,
   },
-  producto: {
+  product: {
     listStyleType: "none",
     display: "flex",
     justifyContent: "space-between",
@@ -30,28 +30,28 @@ const styles = {
   },
 };
 
-class DetalleCarro extends Component {
+class CarDetail extends Component {
   render() {
-    const { carro } = this.props;
-    const priceTotal = _.sumBy(carro, "price");
-    const subtotal = _.sumBy(carro, "cantidad");
+    const { car } = this.props;
+    const priceTotal = _.sumBy(car, "price");
+    const subtotal = _.sumBy(car, "quantity");
     
     return (
-      <div style={styles.detallesCarro}>
+      <div style={styles.carDetail}>
         <ul style={styles.ul}>
-          {carro.map((x) => (
-            <li style={styles.producto} key={x.name}>
+          {car.map((x) => (
+            <li style={styles.product} key={x.name}>
               <ImageProduct product={x} style={styles.img} />
               
               {x.name}
-              <span>{x.cantidad}</span>
+              <span>{x.quantity}</span>
               <span>{x.price}</span>
             </li>
           ))}
-          <div style={styles.producto}>
+          <div style={styles.product}>
             {subtotal} x {priceTotal}
           </div>
-          <div style={styles.producto}>
+          <div style={styles.product}>
             Total: {priceTotal}
           </div>
         </ul>
@@ -60,4 +60,4 @@ class DetalleCarro extends Component {
   }
 }
 
-export default DetalleCarro;
+export default CarDetail;

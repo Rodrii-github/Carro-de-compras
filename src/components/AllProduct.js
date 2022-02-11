@@ -1,15 +1,15 @@
 import { Component } from "react";
-import Producto from "./Producto";
+import Product from "./Product";
 
 const styles = {
-  productos: {
+  products: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
   },
 };
 
-class Productos extends Component {
+class AllProduct extends Component {
   products = [
     { name: "Tomate", price: 1500, img: "/productos/tomate.jpg" },
     { name: "Arbejas", price: 2500, img: "/productos/arbejas.jpg" },
@@ -18,14 +18,14 @@ class Productos extends Component {
 
   render() {
     const products = this.products;
-    const { agregarAlCarro } = this.props;
+    const { addToCar } = this.props;
     return (
-      <div style={styles.productos}>
+      <div style={styles.products}>
         {products.map((product) => (
-          <Producto
+          <Product
             key={product.name}
             product={product}
-            agregarAlCarro={agregarAlCarro}
+            addToCar={addToCar}
           />
         ))}
       </div>
@@ -33,4 +33,4 @@ class Productos extends Component {
   }
 }
 
-export default Productos;
+export default AllProduct;

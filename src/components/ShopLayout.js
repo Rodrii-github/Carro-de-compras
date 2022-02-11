@@ -1,18 +1,18 @@
 import { Component } from "react";
 import Title from "./Title";
 import Layout from "./Layout";
-import Productos from "./Productos";
+import AllProduct from "./AllProduct";
 
 
 
 class ShopLayout extends Component {
   render() {
-    const { carro, agregarAlCarro } = this.props;
+    const { car, addToCar } = this.props;
     return (
       <div>
         <Layout>
           <Title />
-          <Productos carro={carro} agregarAlCarro={agregarAlCarro} />
+          <AllProduct car={car} addToCar={addToCar} />
         </Layout>
       </div>
     );
