@@ -1,6 +1,8 @@
 import { Component } from "react";
 import ImageProduct from "./ImageProduct";
-const _ = require("lodash");
+import QuantityAndPrice from "./QuantityAndPrice";
+import PriceTotal from "./PriceTotal";
+
 
 const styles = {
   cartDetail: {
@@ -33,20 +35,19 @@ const styles = {
 class CartDetail extends Component {
   render() {
     const { cart } = this.props;
-    const priceTotal = _.sumBy(cart, ({ quantity, price }) => quantity * price);
-
     return (
       <div style={styles.cartDetail}>
         <ul style={styles.ul}>
-          {cart.map((x) => (
-            <li style={styles.product} key={x.name}>
-              <ImageProduct product={x} style={styles.img} />
-              {x.name} {"(" + x.price + ")"}
-              <span>{x.quantity}</span>
-              <span>{x.quantity * x.price}</span>
+          {cart.map(({ name, quantity, price, img }) => (
+            <li style={styles.product} key={name}>
+              <ImageProduct product={{ name, img }} style={styles.img} />
+              {name} {"(" + price + ")"}
+              <QuantityAndPrice product={{ quantity, price }} />
             </li>
           ))}
-          <div style={styles.product}>Total: {priceTotal}</div>
+          <div style={styles.product}>
+            <PriceTotal cart={cart} />
+          </div>
         </ul>
       </div>
     );
