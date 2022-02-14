@@ -3,7 +3,7 @@ import Button from "./Button";
 import ImageProduct from "./ImageProduct";
 
 const styles = {
-  producto: {
+  product: {
     border: "1px solid #eee",
     boxShadow: "0 5px 5px rgb(0, 0, 0, 0.1)",
     width: "30%",
@@ -17,13 +17,13 @@ const styles = {
 
 class Product extends Component {
   render() {
-    const { product, addToCar } = this.props;
+    const { product, addToCart } = this.props;
     return (
-      <div style={styles.producto}>
+      <div style={styles.product}>
         <ImageProduct product={product} style={styles.img} />
         <h3>{product.name}</h3>
         <p>{product.price}</p>
-        <Button onClick={() => addToCar(product)}>
+        <Button onClick={() => addToCart(product)}>
           Agregar al carro
         </Button>
       </div>

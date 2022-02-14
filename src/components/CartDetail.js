@@ -1,9 +1,9 @@
 import { Component } from "react";
 import ImageProduct from "./ImageProduct";
-const _ = require ("lodash");
+const _ = require("lodash");
 
 const styles = {
-  carDetail: {
+  cartDetail: {
     backgroundColor: "#fff",
     position: "absolute",
     marginTop: 30,
@@ -30,34 +30,27 @@ const styles = {
   },
 };
 
-class CarDetail extends Component {
+class CartDetail extends Component {
   render() {
-    const { car } = this.props;
-    const priceTotal = _.sumBy(car, "price");
-    const subtotal = _.sumBy(car, "quantity");
-    
+    const { cart } = this.props;
+    const priceTotal = _.sumBy(cart, ({ quantity, price }) => quantity * price);
+
     return (
-      <div style={styles.carDetail}>
+      <div style={styles.cartDetail}>
         <ul style={styles.ul}>
-          {car.map((x) => (
+          {cart.map((x) => (
             <li style={styles.product} key={x.name}>
               <ImageProduct product={x} style={styles.img} />
-              
-              {x.name}
+              {x.name} {"(" + x.price + ")"}
               <span>{x.quantity}</span>
-              <span>{x.price}</span>
+              <span>{x.quantity * x.price}</span>
             </li>
           ))}
-          <div style={styles.product}>
-            {subtotal} x {priceTotal}
-          </div>
-          <div style={styles.product}>
-            Total: {priceTotal}
-          </div>
+          <div style={styles.product}>Total: {priceTotal}</div>
         </ul>
       </div>
     );
   }
 }
 
-export default CarDetail;
+export default CartDetail;

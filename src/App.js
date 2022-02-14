@@ -4,9 +4,7 @@ import Shop from "./components/Shop";
 class App extends Component {
   render() {
     return (
-      <div>
-        <Shop />
-      </div>
+      <Shop />
     );
   }
 }

@@ -4,25 +4,25 @@ import ShopLayout from "./ShopLayout";
 
 class Shop extends Component {
   state = {
-    car: [],
+    cart: [],
   };
 
-  addToCar = (product) => {
-    const { car } = this.state;
-    if (car.find((p) => p.name === product.name)) {
-      const newCar = car.map((p) =>
+  addToCart = (product) => {
+    const { cart } = this.state;
+    if (cart.find(({ name }) => name === product.name)) {
+      const newCart = cart.map((p) =>
         p.name === product.name
           ? {
               ...p,
               quantity: p.quantity + 1,
-              price: p.price + product.price,
+              price: product.price,
             }
           : p
       );
-      return this.setState({ car: newCar });
+      return this.setState({ cart: newCart });
     }
     return this.setState({
-      car: this.state.car.concat({
+      cart: this.state.cart.concat({
         ...product,
         quantity: 1,
       }),
@@ -32,8 +32,8 @@ class Shop extends Component {
   render() {
     return (
       <div>
-        <Navbar car={this.state.car} />
-        <ShopLayout car={this.state.car} addToCar={this.addToCar} />
+        <Navbar cart={this.state.cart} />
+        <ShopLayout addToCart={this.addToCart} />
       </div>
     );
   }

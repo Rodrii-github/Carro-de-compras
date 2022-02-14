@@ -9,7 +9,7 @@ const styles = {
   },
 };
 
-class AllProduct extends Component {
+class AllProducts extends Component {
   products = [
     { name: "Tomate", price: 1500, img: "/productos/tomate.jpg" },
     { name: "Arbejas", price: 2500, img: "/productos/arbejas.jpg" },
@@ -18,14 +18,14 @@ class AllProduct extends Component {
 
   render() {
     const products = this.products;
-    const { addToCar } = this.props;
+    const { addToCart } = this.props;
     return (
       <div style={styles.products}>
         {products.map((product) => (
           <Product
             key={product.name}
             product={product}
-            addToCar={addToCar}
+            addToCart={addToCart}
           />
         ))}
       </div>
@@ -33,4 +33,4 @@ class AllProduct extends Component {
   }
 }
 
-export default AllProduct;
+export default AllProducts;

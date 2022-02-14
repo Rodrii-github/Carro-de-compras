@@ -1,10 +1,10 @@
 import { Component } from "react";
 import BubbleAlert from "./BubbleAlert";
-import CarDetail from "./CarDetail";
+import CartDetail from "./CartDetail";
 const _ = require('lodash');
 
 const styles = {
-  car: {
+  cart: {
     backgroundColor: "#359A2C",
     color: "#fff",
     border: "none",
@@ -19,36 +19,35 @@ const styles = {
   },
 };
 
-class Car extends Component {
+class Cart extends Component {
   state = {
-    visibleCar: false,
+    cartIsVisible: false,
   };
 
-  viewCar = () => {
-    if (!this.props.car.length) {
+  toggleCartVisibility = () => {
+    if (!this.props.cart.length) {
       return;
     }
-    this.setState({ visibleCar: !this.state.visibleCar });
+    this.setState({ cartIsVisible: !this.state.cartIsVisible });
   };
 
   render() {
-    const { car } = this.props;
-    const viewCar = this.viewCar;
-    const { visibleCar } = this.state;
-    const quantity = _.sumBy(car, "quantity");
+    const { cart } = this.props;
+    const { cartIsVisible } = this.state;
+    const quantity = _.sumBy(cart, "quantity");
 
     return (
       <div>
         <span style={styles.bubble}>
           {quantity !== 0 ? <BubbleAlert value={quantity} /> : null}
         </span>
-        <button onClick={viewCar} style={styles.car}>
+        <button onClick={this.toggleCartVisibility} style={styles.cart}>
           Carro
         </button>
-        {visibleCar ? <CarDetail car={car} /> : null}
+        {cartIsVisible ? <CartDetail cart={cart} /> : null}
       </div>
     );
   }
 }
 
-export default Car;
+export default Cart;
