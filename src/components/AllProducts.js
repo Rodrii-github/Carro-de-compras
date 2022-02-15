@@ -21,13 +21,10 @@ class AllProducts extends Component {
     const { addToCart } = this.props;
     return (
       <div style={styles.products}>
-        {products.map((product) => (
-          <Product
-            key={product.name}
-            product={product}
-            addToCart={addToCart}
-          />
-        ))}
+        {products.map(product => {
+          const { name } = product;
+          return <Product key={name} product={product} addToCart={addToCart} />;
+        })}
       </div>
     );
   }

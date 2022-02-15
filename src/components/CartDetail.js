@@ -1,8 +1,7 @@
 import { Component } from "react";
-import ImageProduct from "./ImageProduct";
-import QuantityAndPrice from "./QuantityAndPrice";
-import PriceTotal from "./PriceTotal";
 
+import TotalPrice from "./TotalPrice";
+import CartItem from "./CartItem";
 
 const styles = {
   cartDetail: {
@@ -38,15 +37,9 @@ class CartDetail extends Component {
     return (
       <div style={styles.cartDetail}>
         <ul style={styles.ul}>
-          {cart.map(({ name, quantity, price, img }) => (
-            <li style={styles.product} key={name}>
-              <ImageProduct product={{ name, img }} style={styles.img} />
-              {name} {"(" + price + ")"}
-              <QuantityAndPrice product={{ quantity, price }} />
-            </li>
-          ))}
+          { cart.map(cartItem => <CartItem item={cartItem} styles={styles} />) }
           <div style={styles.product}>
-            <PriceTotal cart={cart} />
+            <TotalPrice cart={cart} />
           </div>
         </ul>
       </div>

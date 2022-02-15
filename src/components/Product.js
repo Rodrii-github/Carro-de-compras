@@ -1,6 +1,6 @@
 import { Component } from "react";
 import Button from "./Button";
-import ImageProduct from "./ImageProduct";
+import ProductImage from "./ProductImage";
 
 const styles = {
   product: {
@@ -18,14 +18,13 @@ const styles = {
 class Product extends Component {
   render() {
     const { product, addToCart } = this.props;
+    const { name, price } = product;
     return (
       <div style={styles.product}>
-        <ImageProduct product={product} style={styles.img} />
-        <h3>{product.name}</h3>
-        <p>{product.price}</p>
-        <Button onClick={() => addToCart(product)}>
-          Agregar al carro
-        </Button>
+        <ProductImage product={product} style={styles.img} />
+        <h3>{name}</h3>
+        <p>{price}</p>
+        <Button onClick={() => addToCart(product)}>Agregar al carro</Button>
       </div>
     );
   }

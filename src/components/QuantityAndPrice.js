@@ -2,11 +2,12 @@ import { Component } from "react";
 
 class QuantityAndPrice extends Component {
   render() {
-    const { product } = this.props;
+    const { product: { quantity, price } } = this.props;
+  
     return (
       <>
-        <span>{product.quantity}</span>
-        <span>{product.quantity * product.price}</span>
+        <span>{quantity}</span>
+        <span>{quantity * price}</span>
       </>
     );
   }

@@ -10,14 +10,14 @@ class Shop extends Component {
   addToCart = (product) => {
     const { cart } = this.state;
     if (cart.find(({ name }) => name === product.name)) {
-      const newCart = cart.map((p) =>
-        p.name === product.name
+      const newCart = cart.map((cartItem) =>
+      cartItem.name === product.name
           ? {
-              ...p,
-              quantity: p.quantity + 1,
+              ...cartItem,
+              quantity: cartItem.quantity + 1,
               price: product.price,
             }
-          : p
+          : cartItem
       );
       return this.setState({ cart: newCart });
     }
